@@ -1,4 +1,4 @@
-package com.github.hatimiti.gamiedx.state.field.entity.character;
+package com.github.hatimiti.gamiedx.screen.field.entity.character;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class Character {
+public class Player {
 
     private int x = 50;
     private int y = 50;
@@ -43,7 +43,7 @@ public class Character {
     // A variable for tracking elapsed time for the animation
     private float stateTime;
 
-    public Character() {
+    public Player() {
         walkSheet = new Texture("animation_sheet.png");
 
         // Use the split utility method to create a 2D array of TextureRegions. This is
