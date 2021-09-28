@@ -7,12 +7,12 @@ public abstract class ArrayListType<O> extends ListType<O> {
 
 	@Override
 	protected List<O> createNewList() {
-		return new ArrayList<O>();
+		return new ArrayList<>();
 	}
 
 	@Override
 	protected List<O> createList(List<O> orig) {
-		return new ArrayList<O>(orig);
+		return new ArrayList<>(orig);
 	}
 
 }

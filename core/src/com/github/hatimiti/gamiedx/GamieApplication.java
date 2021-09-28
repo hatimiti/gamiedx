@@ -1,5 +1,6 @@
 package com.github.hatimiti.gamiedx;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.github.hatimiti.gamiedx.screen.field.FieldScreen;
@@ -12,7 +13,7 @@ public class GamieApplication extends Game {
 
 	@Override
 	public void create() {
-
+	    Gdx.app.setLogLevel(Application.LOG_INFO);
 		// for adding to judge collisions of each game object
 //		world = new World(new Vector2(0, 0), false);
 

@@ -1,6 +1,10 @@
 package com.github.hatimiti.gamiedx.type;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public abstract class ListType<O> extends BaseType<List<O>> implements List<O> {
@@ -8,6 +12,7 @@ public abstract class ListType<O> extends BaseType<List<O>> implements List<O> {
     protected final List<O> list = createNewList();
 
     protected abstract List<O> createNewList();
+
     protected abstract List<O> createList(List<O> orig);
 
     @Override
