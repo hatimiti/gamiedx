@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.GridPoint2;
 import com.github.hatimiti.gamiedx.screen.field.entity.Entity;
 
+import javax.annotation.Nonnull;
+
 abstract class BaseCharacter extends Entity {
 
     // Constant rows and columns of the sprite sheet
@@ -28,7 +30,7 @@ abstract class BaseCharacter extends Entity {
         return 500;
     }
 
-    protected BaseCharacter(final GridPoint2 defaultPoint) {
+    protected BaseCharacter(@Nonnull final GridPoint2 defaultPoint) {
         super(defaultPoint);
 
         walkSheet = new Texture("animation_sheet.png");
