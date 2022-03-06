@@ -23,6 +23,8 @@ allprojects {
         box2DLightsVersion = '1.5' // https://github.com/libgdx/box2dlights
         ashleyVersion = '1.7.3' // https://github.com/libgdx/ashley
         aiVersion = '1.8.2' // https://github.com/libgdx/gdx-ai
+        guavaVersion = '31.1-jre'
+        log4JVersion = '2.17.2'
     }
 
     repositories {
@@ -63,6 +65,8 @@ project(":core") {
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         api "com.badlogicgames.ashley:ashley:$ashleyVersion"
 
-        api "com.google.guava:guava:31.1-jre"
+        api "com.google.guava:guava:$guavaVersion"
+        api "org.apache.logging.log4j:log4j-api:$log4JVersion"
+        api "org.apache.logging.log4j:log4j-core:$log4JVersion"
     }
 }
