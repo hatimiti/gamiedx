@@ -3,7 +3,9 @@ package com.github.hatimiti.gamiedx;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.github.hatimiti.gamiedx.screen.field.FieldScreen;
+import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
 
 public class GamieApplication extends Game {
 
@@ -17,8 +19,10 @@ public class GamieApplication extends Game {
 		// for adding to judge collisions of each game object
 //		world = new World(new Vector2(0, 0), false);
 
-		FieldScreen screen = new FieldScreen(this);
-		screen.create();
+		EntityContainer container = new EntityContainer();
+		container.load();
+		FieldScreen screen = new FieldScreen(this, container);
+		screen.create(new SpriteBatch());
 		setScreen(screen);
 	}
 
@@ -54,7 +58,7 @@ public class GamieApplication extends Game {
 	}
 	
 	@Override
-	public void dispose () {
+	public void dispose() {
 	    getScreen().dispose();
 	}
 }

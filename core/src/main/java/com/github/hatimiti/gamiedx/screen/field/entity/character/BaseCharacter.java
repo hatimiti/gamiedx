@@ -3,10 +3,13 @@ package com.github.hatimiti.gamiedx.screen.field.entity.character;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.GridPoint2;
 import com.github.hatimiti.gamiedx.screen.field.entity.Entity;
+import com.github.hatimiti.gamiedx.screen.field.support.collision.shape.CollisionShape;
+import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
+import com.github.hatimiti.gamiedx.screen.field.value.RectangleDefinition;
 
 import javax.annotation.Nonnull;
 
@@ -30,8 +33,9 @@ abstract class BaseCharacter extends Entity {
         return 500;
     }
 
-    protected BaseCharacter(@Nonnull final GridPoint2 defaultPoint) {
-        super(defaultPoint);
+    protected BaseCharacter(@Nonnull final Coordinate point) {
+        super(CollisionShape.ofRectangle(
+                point, RectangleDefinition.of(20, 32)));
 
         walkSheet = new Texture("animation_sheet.png");
 
@@ -60,12 +64,13 @@ abstract class BaseCharacter extends Entity {
         stateTime = 0f;
     }
 
-    public void render(SpriteBatch batch) {
+    @Override
+    public void render(Batch batch) {
         updateMotion();
         stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
         // Get current frame of animation for the current stateTime
         TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
-        batch.draw(currentFrame, point.x, point.y); // Draw current frame at (50, 50)
+        batch.draw(currentFrame, shape.getCoordinate().getX(), shape.getCoordinate().getY()); // Draw current frame at (50, 50)
     }
 
     public void setLeftMove(final boolean t) {
@@ -89,18 +94,18 @@ abstract class BaseCharacter extends Entity {
     protected void updateMotion() {
         int dx = (int) Math.ceil(moveSpeed() * Gdx.graphics.getDeltaTime());
         if (isLeftMove) {
-            point.sub(dx, 0);
+            shape.sub(Coordinate.of(dx, 0));
         }
         if (isRightMove) {
-            point.add(dx, 0);
+            shape.add(Coordinate.of(dx, 0));
         }
 
         int dy = (int) Math.ceil(moveSpeed() * Gdx.graphics.getDeltaTime());
         if (isUpMove) {
-            point.add(0, dy);
+            shape.add(Coordinate.of(0, dy));
         }
         if (isDownMove) {
-            point.sub(0, dy);
+            shape.sub(Coordinate.of(0, dy));
         }
 
         Gdx.app.debug("PLAYER", String.format("dx=%s, dy=%s",dx, dy));

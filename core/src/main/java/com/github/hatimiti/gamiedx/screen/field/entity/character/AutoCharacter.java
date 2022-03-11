@@ -1,25 +1,21 @@
 package com.github.hatimiti.gamiedx.screen.field.entity.character;
 
-import com.badlogic.gdx.math.GridPoint2;
-import com.github.hatimiti.gamiedx.screen.field.entity.Entity;
+import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
 import com.github.hatimiti.gamiedx.screen.field.support.AutoMover;
+import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 
 public class AutoCharacter extends BaseCharacter {
 
 	protected AutoMover autoMover;
-	protected Player player;
 
 	public AutoCharacter(
 			AutoMover autoMover,
-			GridPoint2 defaultPoint,
-			Player player) {
+			Coordinate defaultPoint) {
 
 	    super(defaultPoint);
 
 //		super(characterNumber, defaultPoint);
 		this.autoMover = autoMover;
-
-		this.player = player; // FIXME remove this
 	}
 
 //	@Override
@@ -43,7 +39,7 @@ public class AutoCharacter extends BaseCharacter {
 //		} else {
 //			//FIXME How to pass EntityContainer
 //			this.autoMover.update(this, clientEntityContainer().getPlayer());
-        autoMover.update(this, player);
+        autoMover.update(this);
 
 //		}
 
@@ -52,5 +48,15 @@ public class AutoCharacter extends BaseCharacter {
 	@Override
 	protected double moveSpeed() {
 		return 0.1;
+	}
+
+	@Override
+	public boolean existsInGame() {
+		return true;
+	}
+
+	@Override
+	public void update(EntityContainer ec) {
+
 	}
 }

@@ -1,7 +1,7 @@
 package com.github.hatimiti.gamiedx.screen.field.support;
 
 import com.github.hatimiti.gamiedx.screen.field.entity.character.AutoCharacter;
-import com.github.hatimiti.gamiedx.screen.field.entity.character.Player;
+import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 
 /**
  * The strategy which approaches to player automatically.
@@ -11,37 +11,45 @@ import com.github.hatimiti.gamiedx.screen.field.entity.character.Player;
 public class AutoApproachMover
 		implements AutoMover {
 
+	private Coordinate approachPoint;
+
+	public void updateApproachPoint(final Coordinate newPoint) {
+		this.approachPoint = newPoint;
+	}
+
 	@Override
-	public void update(
-			final AutoCharacter target,
-			final Player player) {
+	public void update(final AutoCharacter origin) {
 
-		float px = player.x();
-		float tx = target.x();
-		int dx = 0;
-
-		if (tx < px) {
-			dx = 5;
-			target.setRightMove(true);
-			target.setLeftMove(false);
-		} else if (px < tx) {
-			dx = -5;
-			target.setRightMove(false);
-			target.setLeftMove(true);
+		if (approachPoint == null) {
+			return;
 		}
 
-		float py = player.y();
-		float ty = target.y();
+		float tx = approachPoint.getX();
+		float ox = origin.getCollisionShape().getCoordinate().getX();
+		int dx = 0;
+
+		if (ox < tx) {
+			dx = 5;
+			origin.setRightMove(true);
+			origin.setLeftMove(false);
+		} else if (tx < ox) {
+			dx = -5;
+			origin.setRightMove(false);
+			origin.setLeftMove(true);
+		}
+
+		float ty = approachPoint.getY();
+		float oy = origin.getCollisionShape().getCoordinate().getY();
 		int dy = 0;
 
-		if (ty < py) {
+		if (oy < ty) {
 			dy = 5;
-			target.setDownMove(false);
-			target.setUpMove(true);
-		} else if (py < ty) {
+			origin.setDownMove(false);
+			origin.setUpMove(true);
+		} else if (ty < oy) {
 			dy = -5;
-			target.setDownMove(true);
-			target.setUpMove(false);
+			origin.setDownMove(true);
+			origin.setUpMove(false);
 		}
 
 //		FacingDirection d = FacingDirection.getBy(dx | dy);

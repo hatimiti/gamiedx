@@ -2,6 +2,7 @@ package com.github.hatimiti.gamiedx.screen;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g2d.Batch;
 
 public class DefaultScreen implements Screen {
 
@@ -11,7 +12,7 @@ public class DefaultScreen implements Screen {
         this.game = game;
     }
 
-    public void create() {
+    public void create(final Batch batch) {
 
     }
 

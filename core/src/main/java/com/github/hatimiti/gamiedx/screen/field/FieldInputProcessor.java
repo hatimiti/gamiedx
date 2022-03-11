@@ -4,11 +4,11 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input;
 import com.github.hatimiti.gamiedx.DefaultInputProcessor;
 
-public class FieldInputProcessor extends DefaultInputProcessor {
+class FieldInputProcessor extends DefaultInputProcessor {
 
     private final FieldScreen screen;
 
-    public FieldInputProcessor(Game game, FieldScreen screen) {
+    FieldInputProcessor(Game game, FieldScreen screen) {
         super(game);
         this.screen = screen;
     }
@@ -18,16 +18,16 @@ public class FieldInputProcessor extends DefaultInputProcessor {
         switch (keycode)
         {
             case Input.Keys.LEFT:
-                screen.player.setLeftMove(true);
+                screen.container.getPlayer().setLeftMove(true);
                 break;
             case Input.Keys.RIGHT:
-                screen.player.setRightMove(true);
+                screen.container.getPlayer().setRightMove(true);
                 break;
             case Input.Keys.UP:
-                screen.player.setUpMove(true);
+                screen.container.getPlayer().setUpMove(true);
                 break;
             case Input.Keys.DOWN:
-                screen.player.setDownMove(true);
+                screen.container.getPlayer().setDownMove(true);
                 break;
         }
         return true;
@@ -38,16 +38,16 @@ public class FieldInputProcessor extends DefaultInputProcessor {
         switch (keycode)
         {
             case Input.Keys.LEFT:
-                screen.player.setLeftMove(false);
+                screen.container.getPlayer().setLeftMove(false);
                 break;
             case Input.Keys.RIGHT:
-                screen.player.setRightMove(false);
+                screen.container.getPlayer().setRightMove(false);
                 break;
             case Input.Keys.UP:
-                screen.player.setUpMove(false);
+                screen.container.getPlayer().setUpMove(false);
                 break;
             case Input.Keys.DOWN:
-                screen.player.setDownMove(false);
+                screen.container.getPlayer().setDownMove(false);
                 break;
         }
         return true;

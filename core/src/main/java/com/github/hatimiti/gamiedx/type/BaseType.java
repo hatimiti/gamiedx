@@ -2,7 +2,7 @@ package com.github.hatimiti.gamiedx.type;
 
 public abstract class BaseType<T> {
 
-    public abstract T value();
+    protected abstract T value();
 
     @Override
     public boolean equals(Object obj) {
@@ -23,7 +23,7 @@ public abstract class BaseType<T> {
         }
         try {
             return this.getClass().equals(obj.getClass());
-        } catch (Throwable t) {
+        } catch (Exception e) {
             return false;
         }
     }

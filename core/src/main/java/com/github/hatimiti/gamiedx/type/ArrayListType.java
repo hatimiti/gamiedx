@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class ArrayListType<O> extends ListType<O> {
 
 	@Override
-	protected List<O> createNewList() {
+	protected ArrayList<O> createNewList() {
 		return new ArrayList<>();
 	}
 
