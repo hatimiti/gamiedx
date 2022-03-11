@@ -2,7 +2,7 @@ package com.github.hatimiti.gamiedx.screen.field.entity.map.entity;
 
 import com.github.hatimiti.gamiedx.screen.field.support.collision.shape.CollisionShape;
 
-public class BackWall extends Wall {
+public final class BackWall extends Wall {
 
 	private BackWall(float... vertices) {
 		super(CollisionShape.ofPolygon(vertices));

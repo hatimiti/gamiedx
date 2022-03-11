@@ -3,7 +3,7 @@ package com.github.hatimiti.gamiedx.screen.field.support.collision.shape;
 import com.badlogic.gdx.math.Polygon;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 
-class PolygonOperation implements ShapeOperation {
+final class PolygonOperation implements ShapeOperation {
 
     private final Polygon s;
 

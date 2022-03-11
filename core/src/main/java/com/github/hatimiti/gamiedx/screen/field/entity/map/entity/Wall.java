@@ -7,7 +7,9 @@ import com.github.hatimiti.gamiedx.screen.field.support.collision.shape.Collisio
 
 import javax.annotation.Nonnull;
 
-abstract class Wall extends Entity {
+abstract sealed class Wall extends Entity
+		permits BackWall, FrontWall, LeftWall, RightWall {
+
 	protected Wall(@Nonnull CollisionShape shape) {
 		super(shape);
 	}

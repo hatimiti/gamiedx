@@ -3,7 +3,7 @@ package com.github.hatimiti.gamiedx.screen.field.support.collision.shape;
 import com.badlogic.gdx.math.Rectangle;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 
-class RectangleOperation implements ShapeOperation {
+final class RectangleOperation implements ShapeOperation {
 
     private final Rectangle s;
 

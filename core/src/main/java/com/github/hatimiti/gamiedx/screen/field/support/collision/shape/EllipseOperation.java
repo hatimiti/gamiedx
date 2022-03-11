@@ -3,7 +3,7 @@ package com.github.hatimiti.gamiedx.screen.field.support.collision.shape;
 import com.badlogic.gdx.math.Ellipse;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 
-class EllipseOperation implements ShapeOperation {
+final class EllipseOperation implements ShapeOperation {
 
     private final Ellipse s;
 

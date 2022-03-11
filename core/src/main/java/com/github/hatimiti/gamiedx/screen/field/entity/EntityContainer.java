@@ -28,8 +28,8 @@ public class EntityContainer {
 
 	public void load() {
 		// TODO
-		MapViewPoint viewPoint = new MapViewPoint(0, 0);
-		MapView defaultView = new MapView(MapId.FIRST_TOWN, viewPoint, null);
+		final var viewPoint = new MapViewPoint(0, 0);
+		final var defaultView = new MapView(MapId.FIRST_TOWN, viewPoint, null);
 		player = new Player(Coordinate.of(50, 50));
 		add(player, defaultView);
 

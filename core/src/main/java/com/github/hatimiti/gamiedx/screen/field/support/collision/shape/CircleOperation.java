@@ -3,7 +3,7 @@ package com.github.hatimiti.gamiedx.screen.field.support.collision.shape;
 import com.badlogic.gdx.math.Circle;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 
-class CircleOperation implements ShapeOperation {
+final class CircleOperation implements ShapeOperation {
 
     private final Circle s;
 

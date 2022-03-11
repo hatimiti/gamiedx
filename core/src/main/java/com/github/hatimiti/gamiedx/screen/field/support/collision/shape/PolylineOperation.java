@@ -3,7 +3,7 @@ package com.github.hatimiti.gamiedx.screen.field.support.collision.shape;
 import com.badlogic.gdx.math.Polyline;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 
-class PolylineOperation implements ShapeOperation {
+final class PolylineOperation implements ShapeOperation {
 
     private final Polyline s;
 
