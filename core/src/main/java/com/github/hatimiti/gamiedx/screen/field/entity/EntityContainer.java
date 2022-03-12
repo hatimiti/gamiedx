@@ -3,6 +3,8 @@ package com.github.hatimiti.gamiedx.screen.field.entity;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.github.hatimiti.gamiedx.screen.field.entity.character.AutoCharacter;
 import com.github.hatimiti.gamiedx.screen.field.entity.character.Player;
+import com.github.hatimiti.gamiedx.screen.field.entity.listener.MoveEventListener;
+import com.github.hatimiti.gamiedx.screen.field.entity.listener.MoveEventType;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapId;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapViewPoint;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.entity.MapView;
@@ -12,10 +14,12 @@ import com.github.hatimiti.gamiedx.screen.field.value.collection.EntityList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EntityContainer {
+public class EntityContainer
+		implements MoveEventListener {
 
 	private static final Logger LOG = LogManager.getLogger();
 
@@ -94,7 +98,27 @@ public class EntityContainer {
 		return c;
 	}
 
-	protected class EntityContainerByTile {
+	@Override
+	public void onMoveStarted(@Nonnull final MoveEventType e) {
+		switch (e) {
+			case UP -> player.setUpMove(true);
+			case RIGHT -> player.setRightMove(true);
+			case DOWN -> player.setDownMove(true);
+			case LEFT -> player.setLeftMove(true);
+		}
+	}
+
+	@Override
+	public void onMoveStopped(@Nonnull final MoveEventType e) {
+		switch (e) {
+			case UP -> player.setUpMove(false);
+			case RIGHT -> player.setRightMove(false);
+			case DOWN -> player.setDownMove(false);
+			case LEFT -> player.setLeftMove(false);
+		}
+	}
+
+	protected static class EntityContainerByTile {
 		protected MapView view;
 		protected EntityList entities;
 
