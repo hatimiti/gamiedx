@@ -1,4 +1,4 @@
-package com.github.hatimiti.gamiedx.screen.field.support;
+package com.github.hatimiti.gamiedx.screen.field.support.move;
 
 import com.github.hatimiti.gamiedx.screen.field.entity.character.AutoCharacter;
 import com.github.hatimiti.gamiedx.screen.field.entity.character.Player;

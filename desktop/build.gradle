@@ -3,13 +3,26 @@ sourceCompatibility = 17
 project.ext.mainClassName = "com.github.hatimiti.gamiedx.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../core/src/main/resources")
 
+ant.condition(property: "os", value: "windows") { os(family: "windows") }
+ant.condition(property: "os", value: "unix"   ) { os(family: "unix")    }
+
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     workingDir = project.assetsDir
     ignoreExitValue = true
-    jvmArgs = ['-XstartOnFirstThread']
+    switch(ant.properties.os) {
+        case 'windows':
+            jvmArgs = ["-Xlog:gc*:file=${System.getenv()['HOMEPATH']}/gamiedx/gc_%p_%t.log::filecount=5,filesize=10k:time"]
+            break
+        case 'unix':
+            jvmArgs = ['-XX:+PrintGCDetails']
+            break
+        default:
+            jvmArgs = ['-XstartOnFirstThread', '-XX:+PrintGCDetails']
+            break;
+    }
 }
 
 task debug(dependsOn: classes, type: JavaExec) {

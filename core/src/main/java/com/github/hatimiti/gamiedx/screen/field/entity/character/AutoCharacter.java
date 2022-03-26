@@ -1,7 +1,7 @@
 package com.github.hatimiti.gamiedx.screen.field.entity.character;
 
 import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
-import com.github.hatimiti.gamiedx.screen.field.support.AutoMover;
+import com.github.hatimiti.gamiedx.screen.field.support.move.AutoMover;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 
 public class AutoCharacter extends BaseCharacter {

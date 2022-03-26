@@ -8,7 +8,7 @@ import com.github.hatimiti.gamiedx.screen.field.entity.listener.MoveEventType;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapId;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapViewPoint;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.entity.MapView;
-import com.github.hatimiti.gamiedx.screen.field.support.AutoApproachMover;
+import com.github.hatimiti.gamiedx.screen.field.support.move.AutoApproachMover;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 import com.github.hatimiti.gamiedx.screen.field.value.collection.EntityList;
 import org.apache.logging.log4j.LogManager;
