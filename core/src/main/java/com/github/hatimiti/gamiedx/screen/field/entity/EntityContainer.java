@@ -8,7 +8,6 @@ import com.github.hatimiti.gamiedx.screen.field.entity.listener.MoveEventType;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapId;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapViewPoint;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.entity.MapView;
-import com.github.hatimiti.gamiedx.screen.field.support.move.AutoApproachMover;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 import com.github.hatimiti.gamiedx.screen.field.value.collection.EntityList;
 import org.apache.logging.log4j.LogManager;
@@ -37,9 +36,7 @@ public class EntityContainer
 		player = new Player(Coordinate.of(50, 50));
 		add(player, defaultView);
 
-		final AutoApproachMover autoMover = new AutoApproachMover();
-		autoMover.updateApproachPoint(player.getCollisionShape().getCoordinate());
-		add(new AutoCharacter(autoMover, Coordinate.of(100, 50)), defaultView);
+		add(new AutoCharacter(Coordinate.of(100, 50)), defaultView);
 	}
 
 	public boolean add(final Entity entity, final MapView view) {
@@ -47,9 +44,14 @@ public class EntityContainer
 	}
 
 	public void render(final Batch batch) {
+		containerMap.forEach((m, e) -> {
+			e.entities.render(batch);
+		});
+	}
 
-		containerMap.forEach((k, v) -> {
-			v.entities.render(batch);
+	public void update() {
+		containerMap.forEach((m, e) -> {
+			e.entities.update(this);
 		});
 	}
 

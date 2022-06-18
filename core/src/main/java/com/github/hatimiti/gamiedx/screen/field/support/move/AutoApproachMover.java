@@ -1,7 +1,9 @@
 package com.github.hatimiti.gamiedx.screen.field.support.move;
 
 import com.github.hatimiti.gamiedx.screen.field.entity.character.AutoCharacter;
-import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
+import com.github.hatimiti.gamiedx.screen.field.entity.character.Player;
+
+import javax.annotation.Nonnull;
 
 /**
  * The strategy which approaches to player automatically.
@@ -11,20 +13,16 @@ import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 public class AutoApproachMover
 		implements AutoMover {
 
-	private Coordinate approachPoint;
+	private AutoCharacter origin;
 
-	public void updateApproachPoint(final Coordinate newPoint) {
-		this.approachPoint = newPoint;
+	public AutoApproachMover(@Nonnull final AutoCharacter origin) {
+		this.origin = origin;
 	}
 
 	@Override
-	public void update(final AutoCharacter origin) {
+	public void update(final Player target) {
 
-		if (approachPoint == null) {
-			return;
-		}
-
-		float tx = approachPoint.getX();
+		float tx = target.getCollisionShape().getCoordinate().getX();
 		float ox = origin.getCollisionShape().getCoordinate().getX();
 		int dx = 0;
 
@@ -38,7 +36,7 @@ public class AutoApproachMover
 			origin.setLeftMove(true);
 		}
 
-		float ty = approachPoint.getY();
+		float ty = target.getCollisionShape().getCoordinate().getY();
 		float oy = origin.getCollisionShape().getCoordinate().getY();
 		int dy = 0;
 

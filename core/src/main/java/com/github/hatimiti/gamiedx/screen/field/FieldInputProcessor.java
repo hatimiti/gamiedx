@@ -40,8 +40,9 @@ class FieldInputProcessor extends DefaultInputProcessor {
             case Input.Keys.RIGHT: return MoveEventType.RIGHT;
             case Input.Keys.UP: return MoveEventType.UP;
             case Input.Keys.DOWN: return MoveEventType.DOWN;
+            default:
+                return MoveEventType.NONE;
         }
-        throw new IllegalArgumentException("Unknown keycode=" + keycode);
     }
 
     void addListener(@Nonnull final MoveEventListener listener) {

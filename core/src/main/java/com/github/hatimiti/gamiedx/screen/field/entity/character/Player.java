@@ -17,7 +17,7 @@ public class Player extends BaseCharacter {
 
     @Override
     public void update(EntityContainer ec) {
-
+        super.update(ec);
     }
 
     @Override

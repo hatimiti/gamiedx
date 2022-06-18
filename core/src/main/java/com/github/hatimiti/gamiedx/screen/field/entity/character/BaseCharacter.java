@@ -4,9 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.github.hatimiti.gamiedx.screen.field.entity.Entity;
+import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
 import com.github.hatimiti.gamiedx.screen.field.support.collision.shape.CollisionShape;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 import com.github.hatimiti.gamiedx.screen.field.value.RectangleDefinition;
@@ -66,7 +66,6 @@ abstract class BaseCharacter extends Entity {
 
     @Override
     public void render(Batch batch) {
-        updateMotion();
         stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
         // Get current frame of animation for the current stateTime
         TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
@@ -91,7 +90,8 @@ abstract class BaseCharacter extends Entity {
         isDownMove = t;
     }
 
-    protected void updateMotion() {
+    @Override
+    public void update(EntityContainer container) {
         int dx = (int) Math.ceil(moveSpeed() * Gdx.graphics.getDeltaTime());
         if (isLeftMove) {
             shape.sub(Coordinate.of(dx, 0));
