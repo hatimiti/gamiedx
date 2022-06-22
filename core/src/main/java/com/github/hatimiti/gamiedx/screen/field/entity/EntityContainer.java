@@ -8,6 +8,7 @@ import com.github.hatimiti.gamiedx.screen.field.entity.listener.MoveEventType;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapId;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapViewPoint;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.entity.MapView;
+import com.github.hatimiti.gamiedx.screen.field.support.collision.CollisionHandlerImpl;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 import com.github.hatimiti.gamiedx.screen.field.value.collection.EntityList;
 import org.apache.logging.log4j.LogManager;
@@ -126,7 +127,7 @@ public class EntityContainer
 
 		public EntityContainerByTile(final MapView view) {
 			this.view = view;
-			this.entities = new EntityList();
+			this.entities = new EntityList(new CollisionHandlerImpl());
 		}
 	}
 }

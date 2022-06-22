@@ -1,12 +1,13 @@
 package com.github.hatimiti.gamiedx.screen.field.entity;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.github.hatimiti.gamiedx.screen.field.support.collision.CollisionListener;
 import com.github.hatimiti.gamiedx.screen.field.support.collision.shape.CollisionShape;
 import com.github.hatimiti.gamiedx.screen.field.value.EntityId;
 
 import javax.annotation.Nonnull;
 
-public abstract class Entity {
+public abstract class Entity implements CollisionListener {
 
     protected final CollisionShape shape;
 
@@ -31,6 +32,11 @@ public abstract class Entity {
     // TODO protected
     public CollisionShape getCollisionShape() {
         return shape;
+    }
+
+    @Override
+    public CollisionShape[] getCollisionShapes() {
+        return new CollisionShape[] { getCollisionShape() };
     }
 
 }

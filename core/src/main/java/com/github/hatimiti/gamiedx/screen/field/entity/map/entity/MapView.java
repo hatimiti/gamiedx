@@ -7,6 +7,7 @@ import com.github.hatimiti.gamiedx.screen.field.entity.Entity;
 import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapId;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapViewPoint;
+import com.github.hatimiti.gamiedx.screen.field.support.collision.CollisionEvent;
 import com.github.hatimiti.gamiedx.screen.field.support.collision.shape.CollisionShape;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 import com.github.hatimiti.gamiedx.screen.field.value.RectangleDefinition;
@@ -104,4 +105,11 @@ public class MapView extends Entity {
 		return true;
 	}
 
+	@Override
+	public void onCollision(CollisionEvent event) {
+	}
+
+	@Override
+	public void onCollisionFree() {
+	}
 }

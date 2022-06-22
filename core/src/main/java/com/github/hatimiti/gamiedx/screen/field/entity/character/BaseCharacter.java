@@ -7,13 +7,18 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.github.hatimiti.gamiedx.screen.field.entity.Entity;
 import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
+import com.github.hatimiti.gamiedx.screen.field.support.collision.CollisionEvent;
 import com.github.hatimiti.gamiedx.screen.field.support.collision.shape.CollisionShape;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 import com.github.hatimiti.gamiedx.screen.field.value.RectangleDefinition;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
 
 abstract class BaseCharacter extends Entity {
+
+    private static final Logger LOG = LogManager.getLogger();
 
     // Constant rows and columns of the sprite sheet
     private static final int FRAME_COLS = 6, FRAME_ROWS = 5;
@@ -109,5 +114,15 @@ abstract class BaseCharacter extends Entity {
         }
 
         Gdx.app.debug("PLAYER", String.format("dx=%s, dy=%s",dx, dy));
+    }
+
+    @Override
+    public void onCollision(CollisionEvent event) {
+        LOG.info("Collision: {}", event);
+    }
+
+    @Override
+    public void onCollisionFree() {
+        LOG.info("Collision free");
     }
 }

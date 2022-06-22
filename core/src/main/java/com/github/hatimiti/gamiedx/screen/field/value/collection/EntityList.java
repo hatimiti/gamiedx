@@ -3,6 +3,7 @@ package com.github.hatimiti.gamiedx.screen.field.value.collection;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.github.hatimiti.gamiedx.screen.field.entity.Entity;
 import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
+import com.github.hatimiti.gamiedx.screen.field.support.collision.CollisionHandler;
 import com.github.hatimiti.gamiedx.screen.field.value.EntityId;
 import com.github.hatimiti.gamiedx.type.SyncListType;
 
@@ -11,11 +12,11 @@ import java.util.Optional;
 
 public final class EntityList extends SyncListType<Entity> {
 
-//	/** Judge collision */
-//	private CollisionHandler collisionHandler;
+	/** Judge collision */
+	private CollisionHandler collisionHandler;
 
-	public EntityList() {
-//		this.collisionHandler = new CollisionHandler();
+	public EntityList(final CollisionHandler collisionHandler) {
+		this.collisionHandler = collisionHandler;
 	}
 
 	public void render(final Batch g) {
@@ -30,7 +31,7 @@ public final class EntityList extends SyncListType<Entity> {
 		this.parallelStream()
 			.forEach(v -> v.update(entityContainer));
 
-//		this.collisionHandler.detectCollision(this);
+		this.collisionHandler.detectCollision(this);
 	}
 
 	public Optional<Entity> findEntity(final EntityId entityId) {

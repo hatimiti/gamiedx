@@ -41,6 +41,12 @@ public class CollisionShape {
                 .orElseThrow(() -> new IllegalStateException("Unknown shape: " + shape));
     }
 
+    public boolean intersects(final CollisionShape target) {
+        return this.shape.contains(
+                target.getCoordinate().getX(),
+                target.getCoordinate().getY());
+    }
+
     public Coordinate getCoordinate() {
         return this.operation.getCoordinate();
     }
