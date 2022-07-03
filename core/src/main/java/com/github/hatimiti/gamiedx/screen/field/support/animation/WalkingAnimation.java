@@ -1,16 +1,24 @@
 package com.github.hatimiti.gamiedx.screen.field.support.animation;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 import com.github.hatimiti.gamiedx.screen.field.value.RectangleDefinition;
+import com.github.hatimiti.gamiedx.support.GameContainer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class WalkingAnimation {
 
+    private static final Logger LOG = LogManager.getLogger();
+
     private RectangleDefinition rectangle;
+
+    private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
     // A variable for tracking elapsed time for the animation
     private float stateTime;
@@ -47,10 +55,20 @@ public class WalkingAnimation {
         stateTime = 0f;
     }
 
-    public void draw(final Batch batch, final Coordinate point) {
+    public void draw(final GameContainer g, final Coordinate point) {
+
+        if (g.isDebugMode()) {
+            shapeRenderer.setTransformMatrix(g.getGraphic().getTransformMatrix());
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+            shapeRenderer.setColor(Color.BLUE);
+            shapeRenderer.rect(point.getX(), point.getY(), rectangle.getWidth(), rectangle.getHeight());
+            shapeRenderer.end();
+            return;
+        }
+
         stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
         // Get current frame of animation for the current stateTime
         TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
-        batch.draw(currentFrame, point.getX(), point.getY()); // Draw current frame at (50, 50)
+        g.getGraphic().draw(currentFrame, point.getX(), point.getY()); // Draw current frame at (50, 50)
     }
 }

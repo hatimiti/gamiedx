@@ -11,6 +11,7 @@ import com.github.hatimiti.gamiedx.screen.field.entity.map.entity.MapView;
 import com.github.hatimiti.gamiedx.screen.field.support.collision.CollisionHandlerImpl;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 import com.github.hatimiti.gamiedx.screen.field.value.collection.EntityList;
+import com.github.hatimiti.gamiedx.support.GameContainer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,9 +45,9 @@ public class EntityContainer
 		return getEntityListIn(view).add(entity);
 	}
 
-	public void render(final Batch batch) {
+	public void render(final GameContainer g) {
 		containerMap.forEach((m, e) -> {
-			e.entities.render(batch);
+			e.entities.render(g);
 		});
 	}
 

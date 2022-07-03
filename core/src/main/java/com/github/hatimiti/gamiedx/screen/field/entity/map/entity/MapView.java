@@ -2,7 +2,6 @@ package com.github.hatimiti.gamiedx.screen.field.entity.map.entity;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.github.hatimiti.gamiedx.screen.field.entity.Entity;
 import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
 import com.github.hatimiti.gamiedx.screen.field.entity.map.MapId;
@@ -11,6 +10,7 @@ import com.github.hatimiti.gamiedx.screen.field.support.collision.CollisionEvent
 import com.github.hatimiti.gamiedx.screen.field.support.collision.shape.CollisionShape;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 import com.github.hatimiti.gamiedx.screen.field.value.RectangleDefinition;
+import com.github.hatimiti.gamiedx.support.GameContainer;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
@@ -64,10 +64,10 @@ public class MapView extends Entity {
 	}
 
 	@Override
-	public void render(final Batch batch) {
+	public void render(final GameContainer g) {
 //		this.image.draw();
-		batch.setColor(Color.RED);
-		walls.forEach(w -> w.render(batch));
+		g.getGraphic().setColor(Color.RED);
+		walls.forEach(w -> w.render(g));
 	}
 
 	@Override

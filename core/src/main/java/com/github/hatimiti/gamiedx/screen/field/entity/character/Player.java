@@ -1,8 +1,8 @@
 package com.github.hatimiti.gamiedx.screen.field.entity.character;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
+import com.github.hatimiti.gamiedx.support.GameContainer;
 
 public class Player extends BaseCharacter {
 
@@ -11,8 +11,8 @@ public class Player extends BaseCharacter {
     }
 
     @Override
-    public void render(Batch batch) {
-        super.render(batch);
+    public void render(GameContainer g) {
+        super.render(g);
     }
 
     @Override

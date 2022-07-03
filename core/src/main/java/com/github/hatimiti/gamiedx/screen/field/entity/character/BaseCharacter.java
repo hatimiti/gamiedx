@@ -1,7 +1,6 @@
 package com.github.hatimiti.gamiedx.screen.field.entity.character;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.github.hatimiti.gamiedx.screen.field.entity.Entity;
 import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
 import com.github.hatimiti.gamiedx.screen.field.support.animation.WalkingAnimation;
@@ -9,6 +8,7 @@ import com.github.hatimiti.gamiedx.screen.field.support.collision.CollisionEvent
 import com.github.hatimiti.gamiedx.screen.field.support.collision.shape.CollisionShape;
 import com.github.hatimiti.gamiedx.screen.field.value.Coordinate;
 import com.github.hatimiti.gamiedx.screen.field.value.RectangleDefinition;
+import com.github.hatimiti.gamiedx.support.GameContainer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -41,8 +41,8 @@ abstract class BaseCharacter extends Entity {
     }
 
     @Override
-    public void render(Batch batch) {
-        walkingAnimation.draw(batch, shape.getCoordinate());
+    public void render(GameContainer g) {
+        walkingAnimation.draw(g, shape.getCoordinate());
     }
 
     public void setLeftMove(final boolean t) {

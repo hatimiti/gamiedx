@@ -12,10 +12,6 @@ public class DefaultScreen implements Screen {
         this.game = game;
     }
 
-    public void create(final Batch batch) {
-
-    }
-
     @Override
     public void show() {
 

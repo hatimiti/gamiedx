@@ -5,6 +5,7 @@ import com.github.hatimiti.gamiedx.screen.field.entity.Entity;
 import com.github.hatimiti.gamiedx.screen.field.entity.EntityContainer;
 import com.github.hatimiti.gamiedx.screen.field.support.collision.CollisionHandler;
 import com.github.hatimiti.gamiedx.screen.field.value.EntityId;
+import com.github.hatimiti.gamiedx.support.GameContainer;
 import com.github.hatimiti.gamiedx.type.SyncListType;
 
 import java.util.Objects;
@@ -19,7 +20,7 @@ public final class EntityList extends SyncListType<Entity> {
 		this.collisionHandler = collisionHandler;
 	}
 
-	public void render(final Batch g) {
+	public void render(final GameContainer g) {
 		this.stream()
 			.forEach(v -> v.render(g));
 	}

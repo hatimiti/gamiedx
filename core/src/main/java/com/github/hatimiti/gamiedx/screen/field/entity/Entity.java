@@ -1,9 +1,9 @@
 package com.github.hatimiti.gamiedx.screen.field.entity;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.github.hatimiti.gamiedx.screen.field.support.collision.CollisionListener;
 import com.github.hatimiti.gamiedx.screen.field.support.collision.shape.CollisionShape;
 import com.github.hatimiti.gamiedx.screen.field.value.EntityId;
+import com.github.hatimiti.gamiedx.support.GameContainer;
 
 import javax.annotation.Nonnull;
 
@@ -26,7 +26,7 @@ public abstract class Entity implements CollisionListener {
      */
     public abstract boolean existsInGame();
 
-    public abstract void render(Batch g);
+    public abstract void render(GameContainer g);
     public abstract void update(EntityContainer ec);
 
     // TODO protected
