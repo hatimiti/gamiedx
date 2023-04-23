@@ -1,12 +1,14 @@
 package com.github.hatimiti.gamiedx.type;
 
+import javax.annotation.Nullable;
+
 public abstract class BaseType<T> {
 
     protected abstract T value();
 
     @Override
     public boolean equals(Object obj) {
-        if (!isIncetanceOf(obj)) {
+        if (!isInstanceOf(obj)) {
             return false;
         }
         return value().equals(((BaseType<T>) obj).value());
@@ -17,12 +19,15 @@ public abstract class BaseType<T> {
         return value().hashCode();
     }
 
-    protected boolean isIncetanceOf(final Object obj) {
+    protected boolean isInstanceOf(@Nullable final Object obj) {
         if (obj == null) {
             return false;
         }
+        if (this == obj) {
+            return true;
+        }
         try {
-            return this.getClass().equals(obj.getClass());
+            return this.getClass().isAssignableFrom(obj.getClass());
         } catch (Exception e) {
             return false;
         }

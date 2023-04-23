@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 
 public class DefaultScreen implements Screen {
 
-    protected Game game;
+    protected final Game game;
 
     public DefaultScreen(final Game game) {
         this.game = game;

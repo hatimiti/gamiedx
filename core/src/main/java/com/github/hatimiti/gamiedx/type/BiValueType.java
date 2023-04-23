@@ -12,7 +12,7 @@ public abstract class BiValueType<F, S> {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-        if (!isIncetanceOf(obj)) {
+        if (!isInstanceOf(obj)) {
             return false;
         }
         return val1().equals(((BiValueType<F, S>) obj).val1())
@@ -24,7 +24,7 @@ public abstract class BiValueType<F, S> {
         return Objects.hashCode(val1(), val2());
     }
 
-    protected boolean isIncetanceOf(@Nullable final Object obj) {
+    protected boolean isInstanceOf(@Nullable final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -32,7 +32,7 @@ public abstract class BiValueType<F, S> {
             return true;
         }
         try {
-            return this.getClass().equals(obj.getClass());
+            return this.getClass().isAssignableFrom(obj.getClass());
         } catch (Exception e) {
             return false;
         }
